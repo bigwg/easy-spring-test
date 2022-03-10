@@ -6,7 +6,7 @@
 
     <name>easy-spring-test</name>
 
-    <groupId>com.zzw</groupId>
+    <groupId>com.github.bigwg</groupId>
     <artifactId>easy-spring-test</artifactId>
     <version>1.0.0</version>
     <packaging>jar</packaging>
