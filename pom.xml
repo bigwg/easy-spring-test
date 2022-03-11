@@ -4,12 +4,38 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <name>easy-spring-test</name>
-
     <groupId>io.github.bigwg</groupId>
     <artifactId>easy-spring-test</artifactId>
     <version>1.0.0</version>
     <packaging>jar</packaging>
+
+    <name>${project.artifactId}</name>
+    <description>The project of easy-spring-test</description>
+    <url>https://github.com/bigwg/easy-spring-test</url>
+
+    <licenses>
+        <license>
+            <name>Apache License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <scm>
+        <url>https://github.com/bigwg/easy-spring-test</url>
+        <connection>https://github.com/bigwg/easy-spring-test.git</connection>
+    </scm>
+
+    <developers>
+        <developer>
+            <name>bigwg</name>
+            <email>zhaozhiwei711@gmail.com</email>
+            <roles>
+                <role>Developer</role>
+            </roles>
+            <timezone>+8</timezone>
+        </developer>
+    </developers>
 
     <properties>
         <version.spring>5.1.10.RELEASE</version.spring>
@@ -88,48 +114,102 @@
 
     <profiles>
         <profile>
-            <id>dev</id> <!-- 这里的 id 需要配置到部署模板中 -->
+            <id>release</id>
+            <build>
+                <resources>
+                    <resource>
+                        <directory>src/main/java</directory>
+                        <includes>
+                            <include>**/*.properties</include>
+                            <include>**/*.sample</include>
+                        </includes>
+                    </resource>
+                </resources>
+                <plugins>
+                    <!-- Source -->
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-source-plugin</artifactId>
+                        <version>3.0.1</version>
+                        <executions>
+                            <execution>
+                                <phase>package</phase>
+                                <goals>
+                                    <goal>jar-no-fork</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <!-- Javadoc -->
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-javadoc-plugin</artifactId>
+                        <version>2.9.1</version>
+                        <configuration>
+                            <show>private</show>
+                            <nohelp>true</nohelp>
+                            <charset>UTF-8</charset>
+                            <encoding>UTF-8</encoding>
+                            <docencoding>UTF-8</docencoding>
+                            <additionalparam>-Xdoclint:none</additionalparam>
+                            <javadocExecutable>/Library/Java/JavaVirtualMachines/jdk1.8.0_291.jdk/Contents/Home/bin/javadoc</javadocExecutable>
+                        </configuration>
+                        <executions>
+                            <execution>
+                                <phase>package</phase>
+                                <goals>
+                                    <goal>jar</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <!-- GPG -->
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-gpg-plugin</artifactId>
+                        <version>3.0.1</version>
+                        <executions>
+                            <execution>
+                                <phase>verify</phase>
+                                <goals>
+                                    <goal>sign</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <!--Compiler -->
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-compiler-plugin</artifactId>
+                        <version>3.1</version>
+                        <configuration>
+                            <source>1.8</source>
+                            <target>1.8</target>
+                            <fork>true</fork>
+                            <verbose>true</verbose>
+                            <encoding>UTF-8</encoding>
+                            <showWarnings>false</showWarnings>
+                        </configuration>
+                    </plugin>
+                    <!--Release -->
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-release-plugin</artifactId>
+                        <version>2.5.3</version>
+                    </plugin>
+                </plugins>
+            </build>
             <distributionManagement>
-                <repository>
-                    <id>meituan-offline-releases</id>
-                    <name>Meituan Nexus Repository</name>
-                    <url>http://maven.offline.sankuai.com/nexus/content/repositories/releases/</url>
-                </repository>
                 <snapshotRepository>
-                    <id>meituan-offline-snapshots</id>
-                    <name>Meituan Nexus Repository</name>
-                    <url>http://maven.offline.sankuai.com/nexus/content/repositories/snapshots/</url>
+                    <id>sonatype-nexus-snapshots</id>
+                    <name>Sonatype Nexus Snapshots</name>
+                    <url>https://s01.oss.sonatype.org/content/repositories/snapshots/</url>
                 </snapshotRepository>
-            </distributionManagement>
-        </profile>
-        <profile>
-            <id>staging</id> <!-- 这里的 id 需要配置到部署模板中 -->
-            <distributionManagement>
                 <repository>
-                    <id>meituan-nexus-releases</id>
-                    <name>Meituan Nexus Repository</name>
-                    <url>http://pixel.sankuai.com/repository/releases</url>
+                    <id>sonatype-nexus-snapshots</id>
+                    <name>Nexus Release Repository</name>
+                    <url>https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/</url>
                 </repository>
-                <snapshotRepository>
-                    <id>meituan-nexus-snapshots</id>
-                    <name>Meituan Nexus Repository</name>
-                    <url>http://pixel.sankuai.com/repository/snapshots</url>
-                </snapshotRepository>
-            </distributionManagement>
-        </profile>
-        <profile>
-            <id>prod</id> <!-- 这里的 id 需要配置到部署模板中 -->
-            <distributionManagement>
-                <repository>
-                    <id>meituan-nexus-releases</id>
-                    <name>Meituan Nexus Repository</name>
-                    <url>http://pixel.sankuai.com/repository/releases</url>
-                </repository>
-                <snapshotRepository>
-                    <id>meituan-nexus-snapshots</id>
-                    <name>Meituan Nexus Repository</name>
-                    <url>http://pixel.sankuai.com/repository/snapshots</url>
-                </snapshotRepository>
             </distributionManagement>
         </profile>
     </profiles>
