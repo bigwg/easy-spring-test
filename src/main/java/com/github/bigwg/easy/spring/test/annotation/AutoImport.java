@@ -1,4 +1,4 @@
-package com.zzw.easy.spring.test.annotation;
+package com.github.bigwg.easy.spring.test.annotation;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

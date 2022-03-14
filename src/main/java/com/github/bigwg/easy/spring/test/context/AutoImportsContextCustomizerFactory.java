@@ -1,6 +1,6 @@
-package com.zzw.easy.spring.test.context;
+package com.github.bigwg.easy.spring.test.context;
 
-import com.zzw.easy.spring.test.annotation.AutoImport;
+import com.github.bigwg.easy.spring.test.annotation.AutoImport;
 import org.springframework.context.annotation.Bean;
 import org.springframework.core.annotation.AnnotatedElementUtils;
 import org.springframework.test.context.ContextConfigurationAttributes;
