@@ -6,7 +6,7 @@
 
     <groupId>io.github.bigwg</groupId>
     <artifactId>easy-spring-test</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
     <packaging>jar</packaging>
 
     <name>${project.artifactId}</name>
@@ -116,15 +116,6 @@
         <profile>
             <id>release</id>
             <build>
-                <resources>
-                    <resource>
-                        <directory>src/main/java</directory>
-                        <includes>
-                            <include>**/*.properties</include>
-                            <include>**/*.sample</include>
-                        </includes>
-                    </resource>
-                </resources>
                 <plugins>
                     <!-- Source -->
                     <plugin>

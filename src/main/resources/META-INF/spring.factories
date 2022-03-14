@@ -1,3 +1,3 @@
 # Spring Test ContextCustomizerFactories
 org.springframework.test.context.ContextCustomizerFactory=\
-com.zzw.easy.spring.test.context.AutoImportsContextCustomizerFactory
+com.github.bigwg.easy.spring.test.context.AutoImportsContextCustomizerFactory

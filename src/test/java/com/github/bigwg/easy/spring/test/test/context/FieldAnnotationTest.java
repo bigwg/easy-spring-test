@@ -1,6 +1,6 @@
-package com.zzw.easy.spring.test.test.context;
+package com.github.bigwg.easy.spring.test.test.context;
 
-import com.zzw.easy.spring.test.context.AutoImportsContextCustomizer;
+import com.github.bigwg.easy.spring.test.context.AutoImportsContextCustomizer;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.ReflectionUtils;

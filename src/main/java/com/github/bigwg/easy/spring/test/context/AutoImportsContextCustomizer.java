@@ -1,6 +1,6 @@
-package com.zzw.easy.spring.test.context;
+package com.github.bigwg.easy.spring.test.context;
 
-import com.zzw.easy.spring.test.annotation.AutoImport;
+import com.github.bigwg.easy.spring.test.annotation.AutoImport;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.support.AbstractBeanDefinition;
 import org.springframework.beans.factory.support.BeanDefinitionBuilder;
