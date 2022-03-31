@@ -6,7 +6,7 @@
 
     <groupId>io.github.bigwg</groupId>
     <artifactId>easy-spring-test</artifactId>
-    <version>1.0.1</version>
+    <version>1.0.2</version>
     <packaging>jar</packaging>
 
     <name>${project.artifactId}</name>
