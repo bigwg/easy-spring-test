@@ -1,15 +1,14 @@
 package com.github.bigwg.easy.spring.test.context;
 
 import com.github.bigwg.easy.spring.test.annotation.AutoImport;
+import com.github.bigwg.easy.spring.test.util.ApplicationContextUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.support.AbstractBeanDefinition;
 import org.springframework.beans.factory.support.BeanDefinitionBuilder;
 import org.springframework.beans.factory.support.BeanDefinitionReaderUtils;
 import org.springframework.beans.factory.support.BeanDefinitionRegistry;
 import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.context.ApplicationContext;
 import org.springframework.context.ConfigurableApplicationContext;
-import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.core.annotation.AnnotationUtils;
 import org.springframework.test.context.ContextCustomizer;
 import org.springframework.test.context.MergedContextConfiguration;
@@ -59,7 +58,7 @@ public class AutoImportsContextCustomizer implements ContextCustomizer {
                 this.needImportBeans.addAll(getNeedImportBeans(aClass));
             }
             Set<Class<?>> finalImportBeans = removeMockBeans(testClass, needImportBeans);
-            BeanDefinitionRegistry beanDefinitionRegistry = getBeanDefinitionRegistry(context);
+            BeanDefinitionRegistry beanDefinitionRegistry = ApplicationContextUtil.getBeanDefinitionRegistry(context);
             for (Class<?> finalImportBean : finalImportBeans) {
                 AbstractBeanDefinition beanDefinition = BeanDefinitionBuilder.genericBeanDefinition(finalImportBean).getBeanDefinition();
                 String beanName = BeanDefinitionReaderUtils.generateBeanName(beanDefinition, beanDefinitionRegistry);
@@ -68,16 +67,6 @@ public class AutoImportsContextCustomizer implements ContextCustomizer {
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
-    }
-
-    private BeanDefinitionRegistry getBeanDefinitionRegistry(ApplicationContext context) {
-        if (context instanceof BeanDefinitionRegistry) {
-            return (BeanDefinitionRegistry) context;
-        }
-        if (context instanceof AbstractApplicationContext) {
-            return (BeanDefinitionRegistry) ((AbstractApplicationContext) context).getBeanFactory();
-        }
-        throw new IllegalStateException("Could not locate BeanDefinitionRegistry");
     }
 
     private Set<Class<?>> getNeedImportBeans(Class<?> clazz) throws NoSuchMethodException,
