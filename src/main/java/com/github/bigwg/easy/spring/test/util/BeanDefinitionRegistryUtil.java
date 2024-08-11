@@ -10,7 +10,7 @@ import org.springframework.context.support.AbstractApplicationContext;
  * @author zhaozhiwei
  * @since 2022/4/6
  */
-public class ApplicationContextUtil {
+public class BeanDefinitionRegistryUtil {
 
     public static BeanDefinitionRegistry getBeanDefinitionRegistry(ApplicationContext context) {
         if (context instanceof BeanDefinitionRegistry) {

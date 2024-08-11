@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.github.bigwg.easy.spring.test.test.h2.dao.ScoreDao">
+    <resultMap id="baseResultMap" type="com.github.bigwg.easy.spring.test.test.h2.domain.Score">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="student_id" jdbcType="BIGINT" property="studentId"/>
+        <result column="course" jdbcType="INTEGER" property="course"/>
+        <result column="score" jdbcType="VARCHAR" property="score"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+    </resultMap>
+
+    <sql id="baseResult">
+        id, student_id, course, score, create_time, update_time
+    </sql>
+
+    <select id="queryById" parameterType="java.lang.Long" resultMap="baseResultMap">
+        select
+        <include refid="baseResult"/>
+        from score
+        where id = #{id}
+    </select>
+
+    <select id="queryByStudentId" parameterType="java.lang.Long" resultMap="baseResultMap">
+        select
+        <include refid="baseResult"/>
+        from score
+        where student_id = #{studentId}
+    </select>
+
+    <update id="updateById" parameterType="com.github.bigwg.easy.spring.test.test.h2.domain.Score">
+        update score
+        <set>
+            <if test="studentId != null">
+                student_id = #{studentId},
+            </if>
+            <if test="course != null">
+                course = #{course},
+            </if>
+            <if test="score != null">
+                score = #{score},
+            </if>
+        </set>
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+
+    <insert id="batchInsert" keyColumn="id" keyProperty="id" useGeneratedKeys="true">
+        insert into score (student_id, course, score)
+        values
+        <foreach collection="scores" item="item" separator=",">
+            (#{item.studentId}, #{item.course}, #{item.score})
+        </foreach>
+    </insert>
+
+</mapper>
