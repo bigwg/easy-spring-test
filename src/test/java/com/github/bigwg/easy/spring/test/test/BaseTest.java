@@ -12,5 +12,5 @@ import org.springframework.test.context.junit4.SpringRunner;
  */
 @EasySpringTest
 @RunWith(SpringRunner.class)
-public class BaseTest {
+public abstract class BaseTest {
 }
