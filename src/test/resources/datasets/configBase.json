@@ -1,0 +1,16 @@
+{
+  "config": [
+    {
+      "id": 1,
+      "config_value": "test_config_1",
+      "create_time": "2023-05-16 14:00:00",
+      "update_time": "2023-05-16 14:00:00"
+    },
+    {
+      "id": 2,
+      "config_value": "test_config_2",
+      "create_time": "2023-05-16 14:00:00",
+      "update_time": "2023-05-16 14:00:00"
+    }
+  ]
+}

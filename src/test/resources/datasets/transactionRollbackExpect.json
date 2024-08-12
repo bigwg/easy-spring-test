@@ -1,0 +1,30 @@
+{
+  "student": [
+    {
+      "id": 1,
+      "name": "张三",
+      "sex": 1,
+      "last_exam_time": "2023-05-16 14:00:00",
+      "create_time": "2023-05-16 14:00:00",
+      "update_time": "2023-05-16 14:00:00"
+    }
+  ],
+  "score": [
+    {
+      "id": 1,
+      "student_id": 1,
+      "course": 1,
+      "score": 98,
+      "create_time": "2023-05-16 14:00:00",
+      "update_time": "2023-05-16 14:00:00"
+    },
+    {
+      "id": 2,
+      "student_id": 1,
+      "course": 2,
+      "score": 90,
+      "create_time": "2023-05-16 14:00:00",
+      "update_time": "2023-05-16 14:00:00"
+    }
+  ]
+}

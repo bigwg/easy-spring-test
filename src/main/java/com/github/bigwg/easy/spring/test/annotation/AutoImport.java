@@ -15,6 +15,10 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 public @interface AutoImport {
 
-    Class<?>[] value();
+    Class<?>[] value() default {};
+
+    String[] scanBasePackages() default {};
+
+    boolean includeSimpleClass() default false;
 
 }

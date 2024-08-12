@@ -2,3 +2,13 @@
 org.springframework.test.context.ContextCustomizerFactory=\
 com.github.bigwg.easy.spring.test.context.AutoImportsContextCustomizerFactory,\
 com.github.bigwg.easy.spring.test.h2.H2ForceIndexInterceptorCustomizerFactory
+
+# Auto Mock Test Controller
+com.github.bigwg.easy.spring.test.context.AutoMockTestController=\
+com.github.bigwg.easy.spring.test.mock.AnnotationAutoMockTestController
+
+# Field Scan Judge
+com.github.bigwg.easy.spring.test.context.FieldScanJudge=
+
+# TestExecutionListener Factory
+com.github.bigwg.easy.spring.test.context.TestExecutionListenerFactory=

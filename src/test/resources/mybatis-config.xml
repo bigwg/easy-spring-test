@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <settings>
+        <setting name="cacheEnabled" value="false"/>
+        <setting name="lazyLoadingEnabled" value="false"/>
+        <setting name="aggressiveLazyLoading" value="false"/>
+        <setting name="multipleResultSetsEnabled" value="true"/>
+        <setting name="useColumnLabel" value="true"/>
+        <setting name="defaultExecutorType" value="SIMPLE"/>
+        <setting name="defaultStatementTimeout" value="25000"/>
+        <!-- 是否使用插入数据后自增主键的值，需要配合keyProperty使用 -->
+        <setting name="useGeneratedKeys" value="true"/>
+        <!--此属性从旅游复制过来的，功能待验证-->
+        <setting name="callSettersOnNulls" value="true"/>
+        <!--指定 MyBatis 所用日志的具体实现，未指定时将自动查找。SLF4J | LOG4J | LOG4J2 | JDK_LOGGING | COMMONS_LOGGING | STDOUT_LOGGING | NO_LOGGING-->
+        <setting name="logImpl" value="LOG4J2"/>
+        <setting name="mapUnderscoreToCamelCase" value="true"/>
+    </settings>
+
+</configuration>
