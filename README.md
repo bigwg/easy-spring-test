@@ -15,10 +15,6 @@ easy-spring-test提出了一种全新的基于spring环境的最小化环境测�
 ### 引入maven依赖
 
 ```xml
-<properties>
-    <dubbo.version>3.2.13-SNAPSHOT</dubbo.version>
-</properties>
-
 <dependencies>
     <dependency>
         <groupId>io.github.bigwg</groupId>
