@@ -10,6 +10,8 @@ easy-spring-test提出了一种全新的基于spring环境的最小化环境测�
 - 无复杂依赖，稳定性高：不依赖如rpc、mq、缓存、数据库等中间件，提升单测执行的稳定性，避免单测执行因外部组件导致的错误。
 - 环境无关，准确率高：不依赖具体的单测执行环境，不管是在公司、家里、地铁站，甚至火车上、飞机上、外太空（如果能去的话）等场所均可以准确执行单测。
 
+原理参考：[EasySpringTest原理](https://github.com/bigwg/easy-spring-test/blob/main/EASY-SPRING-TEST.md)
+
 ## 快速开始
 
 ### 引入maven依赖
